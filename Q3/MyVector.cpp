@@ -12,6 +12,12 @@ MyVector::~MyVector(){
 	delete[] this->array;
 }
 
+void MyVector::pop_back(){
+	this->array[this->size-1] = NULL;
+	this->size--;
+}
+
+
 void MyVector::push_back(int anElement){
 	int localArray[this->size];
 	for(size_t i{}; i != this->size; i++){
