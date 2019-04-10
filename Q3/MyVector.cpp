@@ -54,6 +54,12 @@ void MyVector::show(){
 }
 
 bool MyVector::operator<(const MyVector& aVector) const{
-	return this->size < aVector.size;
+	return (this->size < aVector.size);
 }
+
+bool MyVector::operator==(const MyVector& aVector) const{
+	return (this->size == aVector.size);
+}
+
+
 #endif
