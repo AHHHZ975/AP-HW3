@@ -13,8 +13,10 @@ MyVector::~MyVector(){
 }
 
 void MyVector::pop_back(){
-	this->array[this->size-1] = NULL;
-	this->size--;
+	if(this->size != 0){
+		this->array[this->size-1] = NULL;
+		this->size--;
+	}	
 }
 
 
@@ -22,13 +24,13 @@ void MyVector::push_back(int anElement){
 	int localArray[this->size];
 	for(size_t i{}; i != this->size; i++){
 		localArray[i] = this->array[i];
-	}		
-	this->size++;	
+	}	
+	this->size++;
 	this->array = new int[this->size];
 	for(size_t i{}; i != this->size - 1; i++){
 		this->array[i] = localArray[i];
 	}
-	this->array[this->size-1] = anElement;
+	this->array[this->size-1] = anElement;	
 }
 
 void MyVector::show(){

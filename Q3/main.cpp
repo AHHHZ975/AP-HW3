@@ -7,7 +7,12 @@ int main(){
 	v.push_back(3);
 	v.push_back(4);
 	v.pop_back();
-	cout << v.size << endl;	
+	v.pop_back();
+	v.pop_back();	
+	v.pop_back();
+	v.pop_back();
+	v.pop_back();
+	cout << v.size << endl;
 	v.show();
 	return 0;
 }
