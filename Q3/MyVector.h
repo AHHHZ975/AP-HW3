@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <math.h>
 
 using std::cout;
 using std::cin;
@@ -12,9 +12,10 @@ public:
 	~MyVector();
 	void show();
 	void pop_back();
-	void push_back(int anElement);
-	size_t size;
-	int capacity;
+	void push_back(int anElement);	
+	size_t size{};
+	size_t capacity{};
+	static inline int capacityCounter{-1};
 private:
 	int* array;
 };

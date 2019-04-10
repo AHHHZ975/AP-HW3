@@ -8,15 +8,22 @@ MyVector::MyVector(){
 	this->capacity = 0;
 }
 
-MyVector::~MyVector(){
-	delete[] this->array;
+MyVector::~MyVector(){	
+	if(this->size != 0){
+		delete[] this->array;
+	}
 }
 
 void MyVector::pop_back(){
 	if(this->size != 0){
 		this->array[this->size-1] = NULL;
 		this->size--;
-	}	
+	}
+	/////////////////// Initial capacity /////////////////////////
+	if(this->size <= pow(2,this->capacityCounter-1)){
+		this->capacityCounter--;	
+	}
+	this->capacity = pow(2,this->capacityCounter);	
 }
 
 
@@ -24,14 +31,20 @@ void MyVector::push_back(int anElement){
 	int localArray[this->size];
 	for(size_t i{}; i != this->size; i++){
 		localArray[i] = this->array[i];
-	}	
+	}
 	this->size++;
 	this->array = new int[this->size];
 	for(size_t i{}; i != this->size - 1; i++){
 		this->array[i] = localArray[i];
 	}
-	this->array[this->size-1] = anElement;	
+	this->array[this->size-1] = anElement;
+	/////////////////// Initial capacity /////////////////////////
+	if(this->size > this->capacity){
+		this->capacityCounter++;	
+	}
+	this->capacity = pow(2,this->capacityCounter);
 }
+
 
 void MyVector::show(){
 	for(size_t i{}; i != this->size; i++){
