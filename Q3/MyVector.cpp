@@ -28,11 +28,11 @@ void MyVector::pop_back(){
 
 
 void MyVector::push_back(int anElement){
-	int localArray[this->size];
+	int localArray[this->size];	
 	for(size_t i{}; i != this->size; i++){
 		localArray[i] = this->array[i];
 	}
-	this->size++;
+	this->size++;	
 	this->array = new int[this->size];
 	for(size_t i{}; i != this->size - 1; i++){
 		this->array[i] = localArray[i];
@@ -53,4 +53,7 @@ void MyVector::show(){
 	cout << endl; 
 }
 
+bool MyVector::operator<(const MyVector& aVector) const{
+	return this->size < aVector.size;
+}
 #endif

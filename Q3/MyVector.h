@@ -13,9 +13,10 @@ public:
 	void show();
 	void pop_back();
 	void push_back(int anElement);	
+	bool operator<(const MyVector& aVector) const;
 	size_t size{};
 	size_t capacity{};
-	static inline int capacityCounter{-1};
 private:
+	static inline int capacityCounter{-1};
 	int* array;
 };
