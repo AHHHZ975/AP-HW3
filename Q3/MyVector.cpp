@@ -7,6 +7,7 @@ MyVector::MyVector(){
 	this->size = 0;
 	this->capacity = 0;
 }
+
 MyVector::MyVector(const MyVector& aVector){
 	////////////// Copy constructor ///////////////
 	cout << "copy constructor" << endl;
@@ -17,7 +18,15 @@ MyVector::MyVector(const MyVector& aVector){
 		this->array[i] = aVector.array[i];
 	}	
 }
-
+MyVector::MyVector(MyVector&& aVector){
+	////////////// Move constructor ///////////////
+	cout << "move constructor" << endl;
+	this->size = aVector.size;
+	this->capacity = aVector.capacity;
+	this->array = new int[this->size];	
+	this->array = aVector.array;	
+	aVector.array = nullptr;			
+}
 MyVector::~MyVector(){	
 	if(this->size != 0){
 		delete[] this->array;
