@@ -10,6 +10,7 @@ using namespace std::rel_ops;
 class MyVector{
 public:
 	MyVector();
+	MyVector(const MyVector& aVector);
 	~MyVector();
 	void show();
 	void pop_back();

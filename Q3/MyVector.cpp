@@ -7,6 +7,16 @@ MyVector::MyVector(){
 	this->size = 0;
 	this->capacity = 0;
 }
+MyVector::MyVector(const MyVector& aVector){
+	////////////// Copy constructor ///////////////
+	cout << "copy constructor" << endl;
+	this->size = aVector.size;
+	this->capacity = aVector.capacity;
+	this->array = new int[this->size];
+	for(size_t i{}; i != this->size; i++){
+		this->array[i] = aVector.array[i];
+	}	
+}
 
 MyVector::~MyVector(){	
 	if(this->size != 0){
