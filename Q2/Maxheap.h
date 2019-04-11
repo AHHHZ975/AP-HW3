@@ -18,6 +18,7 @@ public:
 	void maxHeapify(vector<int>& aVector, size_t index);
 	void heapSort();
 	void printArray();
+	int operator[](size_t i);
 	~Maxheap();
 private:
 	int sizeOfHeapTree;

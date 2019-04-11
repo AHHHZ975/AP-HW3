@@ -75,6 +75,14 @@ void Maxheap::printArray(){
 	cout << endl;
 }
 
+int Maxheap::operator[](size_t i){
+	if(i < this->maxHeapTree.size()){
+		return this->maxHeapTree.at(i);
+	}
+	cout << "Maxheap tree is empty" << endl;
+	return -1;
+}
+
 Maxheap::~Maxheap(){
 	
 }
