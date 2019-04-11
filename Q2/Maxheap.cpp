@@ -13,26 +13,29 @@ Maxheap::Maxheap(int array[], size_t sizeOfArray){
 		this->heapTree.push_back(array[i]);
 	}
 }
+
 void Maxheap::add(int key){
 	this->heapTree.push_back(key);
 }
-void Maxheap::buildMaxHeap(vector<int>& aVector){
-	for(size_t i{aVector.size()/2}; i != 0; i--){
-		this->maxHeapify(aVector, i);
-	}
+
+void Maxheap::buildMaxHeap(){
+	for(size_t i{this->heapTree.size()/2}; i != -1; i--){
+		this->maxHeapify(this->heapTree, i);
+	}	
 }
 void Maxheap::maxHeapify(vector<int>& aVector, size_t index){
-	size_t l{}, r{}, largestIndex{};
+	size_t l{}, r{}, largestIndex;
 	int temp{};
-	l = getLeftChild(aVector, index);
-	r = getRightChild(aVector, index);
-	if(l <= aVector.size() && aVector.at(l) > aVector.at(index)){
+	l = getLeftChild(index);
+	r = getRightChild(index);
+	largestIndex = index;
+	if(l < aVector.size() && aVector.at(l) > aVector.at(index)){
 		largestIndex = l;
 	}
 	else{
 		largestIndex = index;
 	}
-	if(l <= aVector.size() && aVector.at(r) > aVector.at(index)){
+	if(r < aVector.size() && aVector.at(r) > aVector.at(largestIndex)){
 		largestIndex = r;
 	}
 	if(largestIndex != index){
@@ -43,17 +46,34 @@ void Maxheap::maxHeapify(vector<int>& aVector, size_t index){
 	}
 }
 
-int Maxheap::getParent(vector<int>& avector, size_t index){
-	return this->parent.at(index);
+int Maxheap::getParent(size_t index){
+	return ((index-1)/2);
 }
-int Maxheap::getRightChild(vector<int>& avector, size_t index){
-	return 1;
-}
-
-int Maxheap::getLeftChild(vector<int>& avector, size_t index){
-	return 1;
+int Maxheap::getLeftChild(size_t index){
+	return (2*index+1);
 }
 
+int Maxheap::getRightChild(size_t index){
+	return (2*index+2);
+}
+void Maxheap::heapSort(){
+	this->buildMaxHeap();
+	for(size_t i{this->heapTree.size()-1}; i != -1; i--){
+		this->maxHeapTree.push_back(this->heapTree.at(0));
+		int temp = this->heapTree.at(0);
+		this->heapTree.at(0) = this->heapTree.at(i);
+		this->heapTree.at(i) = temp;
+		this->heapTree.pop_back();
+		this->maxHeapify(this->heapTree, 0);
+	}
+
+}
+void Maxheap::printArray(){	
+	for(size_t i{}; i != this->maxHeapTree.size(); i++){
+		cout << this->maxHeapTree.at(i) << " ";		
+	}
+	cout << endl;
+}
 
 Maxheap::~Maxheap(){
 	

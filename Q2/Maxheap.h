@@ -11,17 +11,16 @@ public:
 	Maxheap();
 	Maxheap(int array[], size_t sizeOfArray);
 	void add(int key);
-	int getParent(vector<int>& aVector, size_t index);
-	int getLeftChild(vector<int>& aVector, size_t index);
-	int getRightChild(vector<int>& aVector, size_t index);
-	void buildMaxHeap(vector<int>& aVector);
+	int getParent(size_t index);
+	int getLeftChild(size_t index);
+	int getRightChild(size_t index);
+	void buildMaxHeap();
 	void maxHeapify(vector<int>& aVector, size_t index);
+	void heapSort();
+	void printArray();
 	~Maxheap();
 private:
 	int sizeOfHeapTree;
-	vector<int> parent;
-	vector<int> leftChild;
-	vector<int> rightChild;
 	vector<int> heapTree;
-	vector<int> macHeapTree;
+	vector<int> maxHeapTree;
 };
