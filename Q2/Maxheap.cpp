@@ -13,18 +13,19 @@ Maxheap::Maxheap(int array[], size_t sizeOfArray){
 		this->heapTree.push_back(array[i]);
 	}
 }
-
+void Maxheap::add(int key){
+	this->heapTree.push_back(key);
+}
 void Maxheap::buildMaxHeap(vector<int>& aVector){
 	for(size_t i{aVector.size()/2}; i != 0; i--){
-		maxHeapify(aVector, i);
+		this->maxHeapify(aVector, i);
 	}
 }
-
 void Maxheap::maxHeapify(vector<int>& aVector, size_t index){
 	size_t l{}, r{}, largestIndex{};
 	int temp{};
-	l = getLeftChild(index);
-	r = getRightChild(index);
+	l = getLeftChild(aVector, index);
+	r = getRightChild(aVector, index);
 	if(l <= aVector.size() && aVector.at(l) > aVector.at(index)){
 		largestIndex = l;
 	}
@@ -41,20 +42,18 @@ void Maxheap::maxHeapify(vector<int>& aVector, size_t index){
 		this->maxHeapify(aVector, largestIndex);
 	}
 }
-int Maxheap::getParent(size_t index){
+
+int Maxheap::getParent(vector<int>& avector, size_t index){
 	return this->parent.at(index);
 }
-int Maxheap::getRightChild(size_t index){
+int Maxheap::getRightChild(vector<int>& avector, size_t index){
 	return 1;
 }
 
-int Maxheap::getLeftChild(size_t index){
+int Maxheap::getLeftChild(vector<int>& avector, size_t index){
 	return 1;
 }
 
-void Maxheap::add(int key){
-
-}
 
 Maxheap::~Maxheap(){
 	
