@@ -66,8 +66,8 @@ void Maxheap::heapSort(){
 		this->heapTree.pop_back();
 		this->maxHeapify(this->heapTree, 0);
 	}
-
 }
+
 void Maxheap::printArray(){	
 	for(size_t i{}; i != this->maxHeapTree.size(); i++){
 		cout << this->maxHeapTree.at(i) << " ";		
@@ -75,14 +75,30 @@ void Maxheap::printArray(){
 	cout << endl;
 }
 
-int Maxheap::operator[](size_t i){
-	if(i < this->maxHeapTree.size()){
-		return this->maxHeapTree.at(i);
+int& Maxheap::operator[](size_t index){
+	if(index < this->maxHeapTree.size()){
+		return this->maxHeapTree.at(index);
 	}
-	cout << "Maxheap tree is empty" << endl;
-	return -1;
+	cout << "Maxheap tree is empty" << endl;	
 }
 
+ostream& Maxheap::operator<<(ostream& os){
+	os << 2;
+	return os;
+}
+
+int Maxheap::max(){
+	this->buildMaxHeap();
+	return this->maxHeapTree.at(0);
+}
+
+int Maxheap::getHeight(){
+	return ceil(log2(this->maxHeapTree.size() + 1)) - 1;
+}
+// Maxheap Maxheap::operator+(int aValue){
+// 	 += 5;
+// 	return *this;
+// }
 Maxheap::~Maxheap(){
 	
 }

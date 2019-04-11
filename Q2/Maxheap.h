@@ -1,11 +1,13 @@
 #include <iostream>
+#include <fstream>
 #include <vector>
+#include <math.h>
 
 using std::cout;
 using std::cin;
 using std::endl;
 using std::vector;
-
+using std::ostream;
 class Maxheap{
 public:
 	Maxheap();
@@ -18,7 +20,11 @@ public:
 	void maxHeapify(vector<int>& aVector, size_t index);
 	void heapSort();
 	void printArray();
-	int operator[](size_t i);
+	int& operator[](size_t index);
+	int max();
+	int getHeight();
+	ostream& operator<<(ostream& os);
+	// Maxheap operator+(Maxheap& maxHeap, int aValue);
 	~Maxheap();
 private:
 	int sizeOfHeapTree;
