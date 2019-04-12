@@ -47,6 +47,9 @@ void Maxheap::maxHeapify(vector<int>& aVector, size_t index){
 }
 
 int Maxheap::getParent(size_t index){
+	if(index == 0){
+		return NULL;
+	}
 	return ((index-1)/2);
 }
 int Maxheap::getLeftChild(size_t index){
@@ -82,8 +85,15 @@ int& Maxheap::operator[](size_t index){
 	cout << "Maxheap tree is empty" << endl;	
 }
 
-ostream& Maxheap::operator<<(ostream& os){
-	os << 2;
+ostream& operator<<(ostream& os, Maxheap& maxHeap){	
+	int count{};
+ 	for(size_t i{}; i <= maxHeap.getHeight(); i++){
+	    for(size_t j{}; j < pow(2,i) && count < maxHeap.maxHeapTree.size(); j++){	       
+	        os << maxHeap.maxHeapTree[j+pow(2,i)-1] << " ";	    
+	        count++;
+	    }
+	    os << endl;
+	}
 	return os;
 }
 
@@ -95,10 +105,12 @@ int Maxheap::max(){
 int Maxheap::getHeight(){
 	return ceil(log2(this->maxHeapTree.size() + 1)) - 1;
 }
+
 // Maxheap Maxheap::operator+(int aValue){
 // 	 += 5;
 // 	return *this;
 // }
+
 Maxheap::~Maxheap(){
 	
 }

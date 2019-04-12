@@ -8,6 +8,10 @@ using std::cin;
 using std::endl;
 using std::vector;
 using std::ostream;
+
+class Maxheap;
+ostream& operator<<(ostream& os, Maxheap& maxHeap);
+
 class Maxheap{
 public:
 	Maxheap();
@@ -22,12 +26,11 @@ public:
 	void printArray();
 	int& operator[](size_t index);
 	int max();
-	int getHeight();
-	ostream& operator<<(ostream& os);
+	int getHeight();	
 	// Maxheap operator+(Maxheap& maxHeap, int aValue);
 	~Maxheap();
+	vector<int> maxHeapTree;
 private:
 	int sizeOfHeapTree;
 	vector<int> heapTree;
-	vector<int> maxHeapTree;
 };
