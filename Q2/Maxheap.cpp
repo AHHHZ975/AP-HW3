@@ -131,10 +131,11 @@ int Maxheap::getHeight(){
 	return ceil(log2(this->maxHeapTree.size() + 1)) - 1;
 }
 
-// Maxheap Maxheap::operator+(int aValue){
-// 	 += 5;
-// 	return *this;
-// }
+Maxheap Maxheap::operator+(int aValue){
+	Maxheap copy{*this};
+	 copy.operator[](0) += aValue;	
+	return copy;
+}
 void Maxheap::Delete(){
 	this->maxHeapTree.erase(this->maxHeapTree.begin());
 	this->heapSort();

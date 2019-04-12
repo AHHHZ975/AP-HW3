@@ -34,7 +34,7 @@ int main(){
 	
 	cout << h3.max() << endl; //75
 
-	//h3[0] = h3[0] - 25; 
+	h3[0] = h3[0] - 25; 
 
 	cout << h3.max() << endl; //52
 	h3.Delete();

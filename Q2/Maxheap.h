@@ -31,7 +31,7 @@ public:
 	int LeftChild(size_t index);
 	int RightChild(size_t index);
 	void Delete();
-	// Maxheap operator+(Maxheap& maxHeap, int aValue);
+	Maxheap operator+(int aValue);
 	~Maxheap();
 	vector<int> maxHeapTree;
 private:	
