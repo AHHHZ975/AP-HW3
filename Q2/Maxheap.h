@@ -27,10 +27,13 @@ public:
 	int& operator[](size_t index);
 	int max();
 	int getHeight();	
+	int parent(size_t index);
+	int LeftChild(size_t index);
+	int RightChild(size_t index);
+	void Delete();
 	// Maxheap operator+(Maxheap& maxHeap, int aValue);
 	~Maxheap();
 	vector<int> maxHeapTree;
-private:
-	int sizeOfHeapTree;
+private:	
 	vector<int> heapTree;
 };

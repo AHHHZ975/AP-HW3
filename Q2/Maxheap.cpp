@@ -9,6 +9,7 @@ Maxheap::Maxheap(){
 
 Maxheap::Maxheap(int array[], size_t sizeOfArray){
 	this->heapTree.clear();	
+	this->maxHeapTree.clear();	
 	for(size_t i{}; i != sizeOfArray; i++){
 		this->heapTree.push_back(array[i]);
 	}
@@ -23,6 +24,7 @@ void Maxheap::buildMaxHeap(){
 		this->maxHeapify(this->heapTree, i);
 	}	
 }
+
 void Maxheap::maxHeapify(vector<int>& aVector, size_t index){
 	size_t l{}, r{}, largestIndex;
 	int temp{};
@@ -53,12 +55,31 @@ int Maxheap::getParent(size_t index){
 	return ((index-1)/2);
 }
 int Maxheap::getLeftChild(size_t index){
-	return (2*index+1);
+	return (2*index+1);	
 }
 
 int Maxheap::getRightChild(size_t index){
-	return (2*index+2);
+	return (2*index+2);	
 }
+
+int Maxheap::parent(size_t index){
+	this->heapSort();
+	if(index == 0){
+		return NULL;
+	}
+	return this->maxHeapTree.at((index-1)/2);
+}
+
+int Maxheap::LeftChild(size_t index){
+	this->heapSort();
+	return this->maxHeapTree.at(2*index+1);	
+}
+
+int Maxheap::RightChild(size_t index){
+	this->heapSort();
+	return this->maxHeapTree.at(2*index+2);	
+}
+
 void Maxheap::heapSort(){
 	this->buildMaxHeap();
 	for(size_t i{this->heapTree.size()-1}; i != -1; i--){
@@ -71,7 +92,9 @@ void Maxheap::heapSort(){
 	}
 }
 
-void Maxheap::printArray(){	
+void Maxheap::printArray(){
+	this->heapSort();
+	cout << "/////////// The heap sorted array is: /////////////" << endl;
 	for(size_t i{}; i != this->maxHeapTree.size(); i++){
 		cout << this->maxHeapTree.at(i) << " ";		
 	}
@@ -87,9 +110,11 @@ int& Maxheap::operator[](size_t index){
 
 ostream& operator<<(ostream& os, Maxheap& maxHeap){	
 	int count{};
+	maxHeap.heapSort();
+	cout << "/////////// The heap tree is: /////////////" << endl;
  	for(size_t i{}; i <= maxHeap.getHeight(); i++){
 	    for(size_t j{}; j < pow(2,i) && count < maxHeap.maxHeapTree.size(); j++){	       
-	        os << maxHeap.maxHeapTree[j+pow(2,i)-1] << " ";	    
+	        os << maxHeap.maxHeapTree[j+pow(2,i)-1] << ", ";	    
 	        count++;
 	    }
 	    os << endl;
@@ -110,7 +135,10 @@ int Maxheap::getHeight(){
 // 	 += 5;
 // 	return *this;
 // }
-
+void Maxheap::Delete(){
+	this->maxHeapTree.erase(this->maxHeapTree.begin());
+	this->heapSort();
+}
 Maxheap::~Maxheap(){
 	
 }
